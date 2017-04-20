@@ -2,16 +2,20 @@ Q1. Convert the hexadecimal number 973D4 to base 17. You must show your work. (2
 
 Q2. Error Finding (4 points)
 
-Each of the following 68K assembly language instructions will cause an assembler error. Examine each instruction and explain why the assembler would flag it as an error.
+Each of the following 68K assembly language instructions will cause an assembler error. Examine each instruction and explain why 
+the assembler would flag it as an error.
 
 1) MOVE.B      $A000, A3
 2) ADD.B       #$1000, D2
 3) MOVEA.W     $1234, D0
 4) ANDI.B      #23, #$100   
 
-Q3. Create a source file and analyze the results. Submit the .X68 and .L68 files and answer the question. For simplicity, name your source file as HW1.X68 and your listfile as HW1.L68. (4 points) 
+Q3. Create a source file and analyze the results. Submit the .X68 and .L68 files and answer the question. For simplicity, name your 
+source file as HW1.X68 and your listfile as HW1.L68. (4 points) 
 
-QUESTION: What is the WORD VALUE (not byte, or longword) of the data in memory location $4000, when the program is just about to loop back to the beginning and start over again? Please describe how you got the answer as well. (For example, you can describe how you analyzed the code segments, or how you traced the code segments with debug tools)
+QUESTION: What is the WORD VALUE (not byte, or longword) of the data in memory location $4000, when the program is just about to loop 
+back to the beginning and start over again? Please describe how you got the answer as well. (For example, you can describe how you 
+analyzed the code segments, or how you traced the code segments with debug tools)
 Warning: Do not copy and paste the code segments. It might cause some errors which you might spend whole day to find out. 
 
 =======================================================================================
@@ -67,4 +71,6 @@ Assume that we are using 16-bits system. Represent a negative integer with twoâ€
 (1 pt) Add two numbers of the previous question as hexadecimal, and state,
 whether the sign bit of the result is 1
 whether an overflow occurred.
-(4 pts) Write a program in assembly to add the two numbers (-102 and -87). Inputs should be in hexadecimal format. Store the result in hexadecimal at an address $5000.  Print out the result in command output window as decimal format.(Hint: use the trap function task #3). If an error (overflow) happens, you should also print out the error (overflow) message as well.
+(4 pts) Write a program in assembly to add the two numbers (-102 and -87). Inputs should be in hexadecimal format. 
+Store the result in hexadecimal at an address $5000.  Print out the result in command output window as decimal format.
+(Hint: use the trap function task #3). If an error (overflow) happens, you should also print out the error (overflow) message as well.
