@@ -1,0 +1,65 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.15.04
+Created On: 4/16/2017 2:00:56 PM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : Homework Set #1, Q4.3
+00000000                             3  * Written by : Dwina Solihin
+00000000                             4  * Date       : April 10, 2017
+00000000                             5  * Description: A program to add two hexadecimal numbers. 
+00000000                             6  *-----------------------------------------------------------
+00000000                             7  
+00000000                             8  *-- Beginning of EQUates section (similar to #define in C)--
+00000000                             9  *-----------------------------------------------------------
+00000000  =00005000                 10  addr1           EQU     $5000
+00000000                            11  
+00000000                            12  *inputs are in hexadecimal format
+00000000  =0000FF9A                 13  data1           EQU     $FF9A           *hexadecimal of -102
+00000000  =0000FFA9                 14  data2           EQU     $FFA9           *hexadecimal of -87
+00000000                            15  
+00000000                            16  *Beginning of code segment. This is the assembly language instructions.
+00000000                            17  *-----------------------------------------------------------
+00001000                            18                  ORG     $1000
+00001000                            19      
+00001000  243C 0000FF9A             20  START:          MOVE.L  #data1,D2
+00001006  263C 0000FFA9             21                  MOVE.L  #data2,D3
+0000100C                            22  
+0000100C  307C 5000                 23                  MOVEA.W #addr1,A0
+00001010                            24  
+00001010  D682                      25                  ADD.L   D2,D3           *adding hex value in D2 to D3 (D3 will contain sum)
+00001012  33C3 00001030             26                  MOVE    D3,Result       *D3 will hold the sum of D3 (FF9A + FFA9)
+00001018                            27              
+00001018  20C3                      28                  MOVE.L  D3,(A0)+        *puts the result in memory address 5000
+0000101A                            29  
+0000101A                            30              
+0000101A  3239 00001030             31                  MOVE    Result,D1       *Puts the results in R into data register D1
+00001020  48C1                      32                  EXT.L   D1              *Extends sign bit to preserve the sign
+00001022  B27C 0001                 33                  CMP     #1,D1
+00001026                            34                  
+00001026  303C 0003                 35                  MOVE    #3,D0           *Assigns task number to D0
+0000102A  4E4F                      36                  TRAP    #15             *Computer will perform the task              
+0000102C                            37  
+0000102C                            38  
+0000102C  FFFF FFFF                 39                  SIMHALT                 ; halt simulator
+00001030                            40  *-----------------------------------------------------------
+00001030                            41  
+00001030                            42  *Below is the assembly language to output the decimal result
+00001030                            43  *-----------------------------------------------------------
+00001030                            44  Result          DS.W    1   int Result; *prints out the data saved in results in decimal format
+00001032                            45  Overflow_msg    DS.W    1   "Overflow has occurred!"  
+00001034                            46  
+00001034                            47                  END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ADDR1               5000
+DATA1               FF9A
+DATA2               FFA9
+OVERFLOW_MSG        1032
+RESULT              1030
+START               1000
